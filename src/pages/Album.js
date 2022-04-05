@@ -22,7 +22,7 @@ function Album() {
             <div className='flex flex-row flex-wrap items-center justify- p-5'>
               {albums.filter(album => album.userId === index+1)
               .map((album, index) => (
-                <PhotoAlbumCard title={album.title} index={index} photo={photos} key={index}/>
+                <PhotoAlbumCard title={album.title} index={index + 1} photo={photos} key={index}/>
               ))}
             </div>
 
