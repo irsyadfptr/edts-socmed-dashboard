@@ -4,7 +4,7 @@ import React from 'react'
 function Album() {
 
   return (
-    <div>Album</div>
+    <div className='flex'>Album</div>
   )
 }
 

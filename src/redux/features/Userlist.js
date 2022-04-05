@@ -10,13 +10,17 @@ export const loadUsers = createAsyncThunk(
 )
 
 const initialState = {
+  isLoading: false,
+  userList: {}
 }
 
 const userSlice = createSlice({
     name: "usersData",
     initialState,
     reducers: {
-
+      fetchingData: (state) => {
+        state.isLoading = true
+    },
     },
     extraReducers: {
       [loadUsers.pending]: () => {
@@ -24,7 +28,7 @@ const userSlice = createSlice({
       },
       [loadUsers.fulfilled]: (state, { payload }) => {
         console.log("Fetched Successfully!");
-        return payload;
+        return {...state, userList: payload, isLoading: false};
         // { ...state, base: payload.base, rates: payload.rates, loading: false, searchInput:''}
       },
       [loadUsers.rejected]: () => {
@@ -33,5 +37,6 @@ const userSlice = createSlice({
     },
   });
 
-  export const getAllPhotoAlbum = (state) => state.users.data;
+  export const {fetchingData} = userSlice.actions;
+  export const getAllUsers = (state) => state.users.data;
   export default userSlice.reducer;
