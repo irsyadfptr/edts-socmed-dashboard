@@ -19,7 +19,7 @@ function Album() {
         {name.map((users, index) =>(
           <div className='flex flex-col' key={index} user={users}>
             <h1>{users.name}</h1>
-            <div className='flex flex-row flex-wrap items-center justify- p-5'>
+            <div className='flex flex-row flex-wrap items-center justify-center p-5'>
               {albums.filter(album => album.userId === index+1)
               .map((album, index) => (
                 <PhotoAlbumCard title={album.title} index={index + 1} photo={photos} key={index}/>

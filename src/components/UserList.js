@@ -1,5 +1,6 @@
 import React from "react";
 import { AiFillEye } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 
 function UserList({user}) {
@@ -14,7 +15,13 @@ function UserList({user}) {
       <td className="px-6 py-4">{user.name}</td>
       <td className="px-6 py-4">{user.email}</td>
       <td className="px-6 py-4">{user.phone}</td>
-      <td className="flex justify-center px-6 py-4"><AiFillEye/></td>
+      <td className="flex justify-center px-6 py-4 text-2xl">
+      <Link to={`/user/${user.id}`}>
+      <AiFillEye/>
+      </Link>
+      </td>
+
+
     </tr>
   );
 }

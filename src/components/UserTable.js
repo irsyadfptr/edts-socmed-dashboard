@@ -7,7 +7,7 @@ function UserTable({datas}) {
     <>
       <div className="max-w-5xl mx-auto my-10">
         <div className="shadow-md overflow-x-auto sm:rounded-lg">
-          <div className="">
+          {/* <div className="">
             <label htmlFor="table-search" className="sr-only">
               Search
             </label>
@@ -19,14 +19,9 @@ function UserTable({datas}) {
                 placeholder="Search for items"
               />
             </div>
-          </div>
+          </div> */}
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                <th scope="col-5" className="px-6 py-3">
-                  Action
-                </th>
-                </tr>
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Username
