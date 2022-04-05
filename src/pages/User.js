@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import Table from "../components/Table";
+import UserTable from '../components/UserTable';
 import { fetchingData, loadUsers } from '../redux/features/Userlist';
 
 
@@ -16,7 +16,7 @@ function User() {
 
   return (
     <>
-	<Table datas={users}/>
+	<UserTable datas={users}/>
     </>
   );
 }

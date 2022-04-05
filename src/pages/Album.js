@@ -25,7 +25,6 @@ function Album() {
                 <PhotoAlbumCard title={album.title} index={index + 1} photo={photos} key={index}/>
               ))}
             </div>
-
           </div>
         ))}
       </div>
