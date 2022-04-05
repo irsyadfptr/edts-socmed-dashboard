@@ -5,10 +5,9 @@ function PhotoAlbumCard({title, photo, index}) {
     console.log(thumbnail)
   return (
       <>
-        <div className={`flex flex-col h-48 w-48 items-center justify-center border border-black m-3`}>
-            <h1>{title}</h1>
-            <h1>{thumbnail}</h1>
-            <h3>Photos</h3>
+        <div className={`flex flex-col h-48 w-48 items-center justify-evenly border border-black rounded-xl m-3 bg-gray-900 hover:scale-105`}>
+            <h1 className='font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400'>{title}</h1>
+            <h1 className='text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400'>{thumbnail} Photos</h1>
         </div>
       </>
   )

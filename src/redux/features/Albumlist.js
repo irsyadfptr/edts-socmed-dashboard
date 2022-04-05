@@ -14,14 +14,20 @@ export const loadPhotoAlbums = createAsyncThunk(
 )
 
 const initialState = { 
-
+  title: '', 
+  photoUrl: '',
 }
 
 const photoAlbumSlice = createSlice({
     name: "photoAlbumData",
     initialState,
     reducers: {
-
+      setTitle: (state, action) => {
+        state.title = action.payload
+    },
+      setPhotoUrl: (state, action) => {
+        state.photoUrl = action.payload
+    },
     },
     extraReducers: {
       [loadPhotoAlbums.pending]: () => {
@@ -29,7 +35,7 @@ const photoAlbumSlice = createSlice({
       },
       [loadPhotoAlbums.fulfilled]: (state, { payload }) => {
         console.log("Fetched Successfully!");
-        return payload;
+        return {...state, data: payload};
         // { ...state, base: payload.base, rates: payload.rates, loading: false, searchInput:''}
       },
       [loadPhotoAlbums.rejected]: () => {
@@ -38,5 +44,6 @@ const photoAlbumSlice = createSlice({
     },
   });
 
+  export const { setTitle, setPhotoUrl } = photoAlbumSlice.actions;
   export const getAllPhotoAlbum = (state) => state.photoAlbums.data;
   export default photoAlbumSlice.reducer;

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route,} from "react-router-dom";
 import './App.css';
 import Navbar from "./components/navbar/Navbar";
 import Album from './pages/Album';
+import AlbumDetaill from "./pages/AlbumDetaill";
 import Home from "./pages/Home";
 import Post from './pages/Post';
 import User from './pages/User';
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path='/post' element={<Post/>}/>
           <Route path='/album' element={<Album/>}/>
+          <Route path='/album/:id' element={<AlbumDetaill/>}/>
         </Routes>
     </Router>
     </div>
