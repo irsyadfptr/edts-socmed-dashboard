@@ -22,6 +22,11 @@ function Table({datas}) {
           </div>
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                <th scope="col-5" className="px-6 py-3">
+                  Action
+                </th>
+                </tr>
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Username

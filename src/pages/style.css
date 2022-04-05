@@ -1,0 +1,11 @@
+.carousel-wrapper div {
+    background: lightblue;
+    height: 10rem;
+    margin: 1rem;
+    
+    /* make the text center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
