@@ -1,6 +1,7 @@
 import React from "react";
 import { AiFillEye, AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 
 
@@ -17,11 +18,11 @@ function PostList({post, user}) {
       <td className="px-6 py-4">{post.body}</td>
       <td className="py-4 px-6">
         <div className='flex items-center justify-center text-xl '>
-          <button className="px-2"><AiFillEye/></button>
+          <Link to={`/post/${post.id}`}>
+            <button className="px-2"><AiFillEye/></button>
+          </Link>
           <button className="px-2"><AiFillEdit/></button>
           <button className="px-2"><MdDelete/></button>
-
-
         </div>
 
       </td>

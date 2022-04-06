@@ -10,7 +10,6 @@ function User() {
 	const dispatch = useDispatch()
 
     useEffect(() => {
-		dispatch(fetchingData())
       dispatch(loadUsers());
     }, [dispatch])
 

@@ -5,6 +5,7 @@ import Album from './pages/Album';
 import AlbumDetaill from "./pages/AlbumDetaill";
 import Home from "./pages/Home";
 import Post from './pages/Post';
+import PostDetail from "./pages/PostDetail";
 import User from './pages/User';
 import UserDetail from "./pages/UserDetail";
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/post' element={<Post/>}/>
           <Route path='/album' element={<Album/>}/>
           <Route path='/album/:id' element={<AlbumDetaill/>}/>
+          <Route path='/post/:id' element={<PostDetail/>}/>
         </Routes>
     </Router>
     </div>
