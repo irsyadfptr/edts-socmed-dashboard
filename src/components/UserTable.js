@@ -2,7 +2,6 @@ import React from "react";
 import UserList from "./UserList";
 
 function UserTable({datas}) {
-    console.log(datas)
   return (
     <>
       <div className="max-w-5xl mx-auto my-10">

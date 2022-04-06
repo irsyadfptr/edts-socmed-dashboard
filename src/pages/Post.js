@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import ModalPost from '../components/ModalPost'
@@ -42,15 +42,16 @@ function Post() {
 
   const submitPost = () => {
     modalWording === "Create" ? 
-    // dispatch(createComment({name: name,
-    //     email: email, body: body, postId: parseInt(id), id: latestId})) :
     dispatch(createPost({title: title,
-      body: body, id: latestId, name: name, username: username})) :
+      body: body, id: latestId, name: name, username: username}))
+    :
     dispatch(editPost({title: title,
          body: body, id: currentId}))
     setToggle(false)
     setTitle('')
     setBody('')
+    setName('')
+    setUsername('')
 }
   
   const clickDelete = (post) => {
@@ -72,18 +73,6 @@ function Post() {
   function handleUsername(event) {
     setUsername(event.target.value)
   }
-
-  // const submitComment = () => {
-  //   modalWording === "Create" ? 
-  //   dispatch(createComment({name: name,
-  //       email: email, body: body, postId: parseInt(id), id: latestId})) :
-  //   dispatch(editComment({name: name,
-  //       email: email, body: body, id: currentId}))
-  //   setToggle(false)
-  //   setName('')
-  //   setEmail('')
-  //   setBody('')
-  // }
   return (
     <>
       {toggle ? <ModalPost wording={modalWording} close={closeModal} title={handleTitle} msg={handleBody} name={handleName} username={handleUsername} submit={submitPost}/> : <></>}

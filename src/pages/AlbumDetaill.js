@@ -7,7 +7,7 @@ import { setPhotoUrl, setTitle } from '../redux/features/Albumlist'
 
 function AlbumDetaill() {
     let { id } = useParams()
-    const photos = useSelector(state => state.photoAlbums.data.photos).filter(fil => fil.albumId == id)
+    const photos = useSelector(state => state.photoAlbums.data.photos).filter(fil => fil.albumId === parseInt(id))
     const photo = useSelector(state => state.photoAlbums.photoUrl)
     const title = useSelector(state => state.photoAlbums.title)
     const albumName = useSelector(state => state.photoAlbums.data.albums)[id].title
@@ -31,7 +31,7 @@ function AlbumDetaill() {
         <div className="flex flex-wrap p-2 justify-center items-center">
             {photos.map((photo, index) => (
                 <button key={index} className='m-3 flex flex-col hover:scale-105' type="button"  onClick={() => cardClick(photo.title, photo.url)} >
-                    <img src={`${photo.thumbnailUrl}`} alt="image" className='rounded'/>
+                    <img src={`${photo.thumbnailUrl}`} alt="crash" className='rounded'/>
                     {/* <div className='py-3 '>
                     <h1 className='object-contain'>{photo.title}</h1>
                     </div> */}

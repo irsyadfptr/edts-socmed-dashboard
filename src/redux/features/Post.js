@@ -25,7 +25,7 @@ const postSlice = createSlice({
         state.posts.push(action.payload)
       },
       editPost: (state, action) =>{
-        let objIndex = state.posts.findIndex(obj => obj.id == action.payload.id);
+        let objIndex = state.posts.findIndex(obj => obj.id === action.payload.id);
         Object.assign(state.posts[objIndex], action.payload)
       },      
       deletePost: (state, action) => {
@@ -35,7 +35,7 @@ const postSlice = createSlice({
         state.comments.push(action.payload)
       },
       editComment: (state, action) =>{
-        let objIndex = state.comments.findIndex(obj => obj.id == action.payload.id);
+        let objIndex = state.comments.findIndex(obj => obj.id === action.payload.id);
         Object.assign(state.comments[objIndex], action.payload)
       },      
       deleteComment: (state, action) => {
@@ -50,7 +50,6 @@ const postSlice = createSlice({
       [loadPosts.fulfilled]: (state, { payload }) => {
         console.log("Fetched Successfully!");
         return  payload;
-        // { ...state, base: payload.base, rates: payload.rates, loading: false, searchInput:''}
       },
       [loadPosts.rejected]: () => {
         console.log("Rejected!");

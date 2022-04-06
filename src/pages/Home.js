@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { loadPhotoAlbums } from '../redux/features/Albumlist'
 import { loadPosts } from '../redux/features/Post'
 import { loadUsers } from '../redux/features/Userlist'
 
 function Home() {
-    const state = useSelector((state) => state)
-    console.log(state)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -16,7 +14,11 @@ function Home() {
     }, [dispatch])
     
   return (
-    <div>Home</div>
+    <div className='flex flex-col font-semibold uppercase text-5xl justify-center items-center mt-48'>
+      
+      <h1>This is Homepage, nothing to see here</h1>
+      <h1>Head directly to navigation</h1>
+    </div>
   )
 }
 

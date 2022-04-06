@@ -29,7 +29,6 @@ const userSlice = createSlice({
       [loadUsers.fulfilled]: (state, { payload }) => {
         console.log("Fetched Successfully!");
         return {...state, userList: payload, isLoading: false};
-        // { ...state, base: payload.base, rates: payload.rates, loading: false, searchInput:''}
       },
       [loadUsers.rejected]: () => {
         console.log("Rejected!");

@@ -8,7 +8,7 @@ import ModalComment from '../components/ModalComment';
 
 function PostDetail() {
     let {id} = useParams()
-    const comments = useSelector(state => state.posts.comments).filter(x => x.postId == id)
+    const comments = useSelector(state => state.posts.comments).filter(x => x.postId === parseInt(id))
     const posts = useSelector(state => state.posts.posts)[id-1]
     const author = useSelector(state => state.users.userList)[posts.userId-1].name
 
@@ -67,11 +67,9 @@ function PostDetail() {
     function handleBody(event) {
         setBody(event.target.value)
     }
-
-    console.log(comments)
     return (
     <>
-        <div className='block mx-auto'>
+        <div className='block mx-auto my-5'>
             <div className='flex justify-end m-5'>
                 <button onClick={openModalCreate} className='py-2 px-4 rounded-xl bg-gray-700 text-white'>
                 <h1>New comment</h1>
