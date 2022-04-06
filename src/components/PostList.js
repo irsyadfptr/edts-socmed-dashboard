@@ -4,8 +4,7 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 
-
-function PostList({post, user}) {
+function PostList({post, user, deleteClick}) {
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
       <th
@@ -22,7 +21,7 @@ function PostList({post, user}) {
             <button className="px-2"><AiFillEye/></button>
           </Link>
           <button className="px-2"><AiFillEdit/></button>
-          <button className="px-2"><MdDelete/></button>
+          <button className="px-2" onClick={() => deleteClick(post.id)}><MdDelete/></button>
         </div>
 
       </td>
