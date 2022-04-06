@@ -12,10 +12,12 @@ function Album() {
 
   return (
     <>
-      <div>
+      <div className='my-5 font-semibold'>
         {name.map((users, index) =>(
           <div className='flex flex-col' key={index} user={users}>
-            <h1>{users.name}</h1>
+            <div className='text-3xl'>
+            <h1>{users.name}'s Album</h1>
+            </div>
             <div className='flex flex-row flex-wrap items-center justify-center p-5'>
               {albums.filter(album => album.userId === index+1)
               .map((album, index) => (

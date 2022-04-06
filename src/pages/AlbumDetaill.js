@@ -26,7 +26,8 @@ function AlbumDetaill() {
     }
   return (
     <>
-        <h1>{albumName}</h1>
+    <div className='my-5'>
+        <h1 className='text-3xl font-semibold'>{albumName.toUpperCase()}</h1>
         <div className="flex flex-wrap p-2 justify-center items-center">
             {photos.map((photo, index) => (
                 <button key={index} className='m-3 flex flex-col hover:scale-105' type="button"  onClick={() => cardClick(photo.title, photo.url)} >
@@ -38,6 +39,7 @@ function AlbumDetaill() {
             ))}
             {toggle ? <ModalPhoto onClick={closeClick} title={title} photo={photo}/> : <></>}
         </div>
+    </div>
     </>
   )
 }
