@@ -1,12 +1,12 @@
 import React from 'react'
 import PostList from './PostList'
 
-function PostTable({user, posts, newPost, editPost, deleteClick}) {
+function PostTable({user, posts, editClick, newClick, deleteClick}) {
   return (
     <>
       <div className="max-w-5xl mx-auto my-10">
       <div className='flex justify-end mb-5'>
-        <button className='py-2 px-4 rounded-xl bg-gray-700 text-white'>
+        <button onClick={newClick} className='py-2 px-4 rounded-xl bg-gray-700 text-white'>
           <h1>New post</h1>
         </button>
       </div>
@@ -33,7 +33,7 @@ function PostTable({user, posts, newPost, editPost, deleteClick}) {
             </thead>
             <tbody>
                 {posts.map((post, index) =>(
-                    <PostList key={index} post={post} user={user[post.userId - 1]} deleteClick={deleteClick}/>
+                    <PostList key={index} post={post} user={user[post.userId - 1]} deleteClick={deleteClick} editClick={editClick}/>
                 ))} 
             </tbody>
           </table>

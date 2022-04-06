@@ -21,6 +21,13 @@ const postSlice = createSlice({
     name: "postData",
     initialState,
     reducers: {
+      createPost: (state, action) => {
+        state.posts.push(action.payload)
+      },
+      editPost: (state, action) =>{
+        let objIndex = state.posts.findIndex(obj => obj.id == action.payload.id);
+        Object.assign(state.posts[objIndex], action.payload)
+      },      
       deletePost: (state, action) => {
         state.posts = state.posts.filter(post => post.id !== action.payload)
       },
@@ -51,6 +58,6 @@ const postSlice = createSlice({
     },
   });
 
-  export const { deletePost, createComment, editComment, deleteComment } = postSlice.actions;
+  export const { createPost, editPost, deletePost, createComment, editComment, deleteComment } = postSlice.actions;
   export const getAllPhotoAlbum = (state) => state.post.data;
   export default postSlice.reducer;
