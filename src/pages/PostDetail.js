@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
-import { deleteComment } from '../redux/features/Post';
+import { createComment, deleteComment, editComment } from '../redux/features/Post';
+import ModalComment from '../components/ModalComment';
 
 function PostDetail() {
     let {id} = useParams()
@@ -11,20 +12,68 @@ function PostDetail() {
     const posts = useSelector(state => state.posts.posts)[id-1]
     const author = useSelector(state => state.users.userList)[posts.userId-1].name
 
-    const state = useSelector((state) => state)
+    const idBundle = useSelector(state => state.posts.comments).map(x => x.id)
+    const latestId = idBundle[idBundle.length - 1] + 1
+
+    const [toggle, setToggle] = useState(false)
+    const [modalWording, setModalWording] = useState('')
+
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [body, setBody] = useState('')
+    const [currentId, setCurrentId] = useState(0)
 
     const dispatch = useDispatch()
 
     const  clickDelete = (com) => {
         dispatch(deleteComment(com))
-        console.log(state)
     }
 
+    const closeModal = () => {
+        setToggle(false)
+    }
+
+    const openModalCreate = () => {
+        setModalWording('Create')
+        setToggle(true)
+    }
+
+    const openModalEdit = (curId) => {
+        setModalWording('Edit')
+        setToggle(true)
+        setCurrentId(curId)
+    }
+
+    const submitComment = () => {
+        modalWording === "Create" ? 
+        dispatch(createComment({name: name,
+            email: email, body: body, postId: parseInt(id), id: latestId})) :
+        dispatch(editComment({name: name,
+            email: email, body: body, id: currentId}))
+        setToggle(false)
+        setName('')
+        setEmail('')
+        setBody('')
+    }
+
+    function handleName(event) {
+        setName(event.target.value)
+    }
+
+    function handleEmail(event) {
+        setEmail(event.target.value)
+    }
+
+    function handleBody(event) {
+        setBody(event.target.value)
+    }
+
+    console.log(comments)
     return (
     <>
         <div className='block mx-auto'>
             <div className='flex justify-end m-5'>
-                <button className='py-2 px-4 rounded-xl bg-gray-700 text-white'>
+                <button onClick={openModalCreate} className='py-2 px-4 rounded-xl bg-gray-700 text-white'>
                 <h1>New comment</h1>
                 </button>
             </div>
@@ -44,13 +93,13 @@ function PostDetail() {
                         </h1>
                     </div>
                     <div className='flex justify-center items-center text-2xl'>
-                    <button className="px-2"><AiFillEdit/></button>
+                    <button className="px-2" onClick={() => openModalEdit(comment.id)}><AiFillEdit/></button>
                     <button className="px-2" onClick={() => clickDelete(comment.id)}><MdDelete/></button>
                     </div>
                 </div>
 
             ))}
-
+            {toggle ? <ModalComment wording={modalWording} close={closeModal} submit={submitComment} name={handleName} email={handleEmail} msg={handleBody}/> : <></>}
         </div>
     </>
   )

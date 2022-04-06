@@ -14,7 +14,7 @@ export const loadPosts = createAsyncThunk(
 )
 
 const initialState = { 
-
+  
 }
 
 const postSlice = createSlice({
@@ -23,6 +23,13 @@ const postSlice = createSlice({
     reducers: {
       deletePost: (state, action) => {
         state.posts = state.posts.filter(post => post.id !== action.payload)
+      },
+      createComment: (state, action) => {
+        state.comments.push(action.payload)
+      },
+      editComment: (state, action) =>{
+        let objIndex = state.comments.findIndex(obj => obj.id == action.payload.id);
+        Object.assign(state.comments[objIndex], action.payload)
       },      
       deleteComment: (state, action) => {
         state.comments = state.comments.filter(comment => comment.id !== action.payload)
@@ -35,7 +42,7 @@ const postSlice = createSlice({
       },
       [loadPosts.fulfilled]: (state, { payload }) => {
         console.log("Fetched Successfully!");
-        return payload;
+        return  payload;
         // { ...state, base: payload.base, rates: payload.rates, loading: false, searchInput:''}
       },
       [loadPosts.rejected]: () => {
@@ -44,6 +51,6 @@ const postSlice = createSlice({
     },
   });
 
-  export const { deletePost, deleteComment } = postSlice.actions;
+  export const { deletePost, createComment, editComment, deleteComment } = postSlice.actions;
   export const getAllPhotoAlbum = (state) => state.post.data;
   export default postSlice.reducer;
