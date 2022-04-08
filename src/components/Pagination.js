@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Pagination({postsPerPage, totalPosts, paginate, currentPage}) {
+function Pagination({totalPosts, paginate, currentPage, limitPage}) {
         const pageNumbers = [];
       
-        for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+        for (let i = 1; i <= Math.ceil(totalPosts / limitPage); i++) {
           pageNumbers.push(i);
         }      
         return (
@@ -13,10 +13,10 @@ function Pagination({postsPerPage, totalPosts, paginate, currentPage}) {
                 Showing
                 <span className='font-medium'>
                   {" "}
-                  {currentPage * postsPerPage - 5}{" "}
+                  {currentPage * limitPage - limitPage + 1}{" "}
                 </span>
                 to
-                <span className='font-medium'> {currentPage * postsPerPage} </span>
+                <span className='font-medium'> {currentPage * limitPage} </span>
                 of
                 <span className='font-medium'> {totalPosts} </span>
                 results

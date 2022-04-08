@@ -1,9 +1,7 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Pagination from '../components/Pagination'
-import Posts from '../components/Posts'
-import Table from '../components/Table'
+import Table from '../components/UserTable'
 import { loadPhotoAlbums } from '../redux/features/Albumlist'
 import { loadPosts } from '../redux/features/Post'
 import { loadUsers } from '../redux/features/Userlist'
@@ -15,7 +13,7 @@ function Home() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(5);
+    const [limitPerPage] = useState(5);
 
     useEffect(() => {
       dispatch(loadUsers());
@@ -23,25 +21,26 @@ function Home() {
       dispatch(loadPosts())
     }, [dispatch])
 
-    const indexOfLastList = currentPage * postsPerPage;
-    const indexOfFirstList = indexOfLastList - postsPerPage;
+    const indexOfLastList = currentPage * limitPerPage;
+    const indexOfFirstList = indexOfLastList - limitPerPage;
     const currentUsers = users.slice(indexOfFirstList, indexOfLastList);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className='flex flex-col font-semibold uppercase text-5xl justify-center items-center my-20'>
-      
-      <div>
+    <div>
+      <div  className='flex flex-col font-semibold uppercase text-5xl justify-center items-center my-20'>
         <Table userlist= {currentUsers}/>
+        <div className='justify-left'>
         <Pagination
-          postsPerPage={postsPerPage}
+          postsPerPage={limitPerPage}
           totalPosts={users.length}
           paginate={paginate}
           currentPage={currentPage}
+          limitPage={limitPerPage}
         />
+        </div>
       </div>
-      
     </div>
   )
 }
