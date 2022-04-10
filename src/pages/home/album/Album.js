@@ -35,13 +35,13 @@ function Album() {
             </Link>
           </div>
             <div className='text-3xl'>
-            <h1>{currentUser.name}'s Album</h1>
+            <h1>{currentUser?.name}'s Album</h1>
             </div>
             <div className='flex flex-row flex-wrap items-center justify-center p-5'>
               {albums?.filter(album => album.userId === parseInt(id))
               ?.map((album, index) => (
-                <Link to={`/${id}/albums/${album.id}`}>
-                  <div className={`flex flex-col h-48 w-48 p-2 items-center justify-evenly border border-black rounded-xl m-3 bg-gray-900 hover:scale-105`} key={index}>
+                <Link to={`/${id}/albums/${album.id}`} key={index}>
+                  <div className={`flex flex-col h-48 w-48 p-2 items-center justify-evenly border border-black rounded-xl m-3 bg-gray-900 hover:scale-105`}>
                       <h1 className='font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 uppercase'>{album.title}</h1>
                   </div>
                 </Link>
