@@ -10,8 +10,6 @@ function Home() {
     const dispatch = useDispatch()
 
     const users = useSelector(state => state.users.userList)
-    const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [limitPerPage] = useState(5);
 

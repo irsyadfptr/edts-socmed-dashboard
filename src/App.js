@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Routes, Route,} from "react-router-dom";
 import './App.css';
 import Header from "./components/Header";
+import Album from "./pages/Album";
 import Comment from "./pages/Comment";
 import Detail from "./pages/Detail";
 import Home from "./pages/Home";
+import Photo from "./pages/Photo";
 import Post from "./pages/Post";
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
         <Routes>
           {/* <Route path="/user" element={<User/>}/>
           <Route path="/user/:id" element={<UserDetail/>}/> */}
-          <Route path="/" element={<Comment />}/>
+          <Route path="/" element={<Album />}/>
           {/* <Route path='/post' element={<Post/>}/>
           <Route path='/album' element={<Album/>}/>
           <Route path='/album/:id' element={<AlbumDetaill/>}/>

@@ -14,6 +14,7 @@ export const loadPhotoAlbums = createAsyncThunk(
 )
 
 const initialState = { 
+  data: [],
   title: '', 
   photoUrl: '',
 }
