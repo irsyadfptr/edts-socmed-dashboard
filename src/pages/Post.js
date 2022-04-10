@@ -26,9 +26,38 @@ function Post() {
   const [toggle, setToggle] = useState(false)
   const [modalWording, setModalWording] = useState('')
 
+  
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
   const [currentId, setCurrentId] = useState(0)
+
+  const [validation, setValidation] = useState({
+    title: "",
+    body: "",
+    titleValid: false,
+    bodyValid: false,
+  });
+
+  const checkValidation = () => {
+    let errors = validation;
+
+    if (!title.trim()) {
+      errors.titleValid = false
+      errors.title = "Title is required";
+    } else {
+      errors.titleValid = true
+      errors.title = "";
+    }
+    if (!body.trim()) {
+      errors.titleValid = false
+      errors.body = "Body message is required";
+    } else {
+      errors.bodyValid = true;
+      errors.body = "";
+    }
+
+    setValidation(errors);
+  };
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -56,16 +85,23 @@ function Post() {
   }
 
   const submitPost = () => {
-    modalWording === "Create" ? 
-    dispatch(createPost({title: title,
-      body: body, userId: parseInt(id), id: latestId}))
-    :
-    dispatch(editPost({title: title,
-         body: body, id: currentId}))
-    setToggle(false)
-    setTitle('')
-    setBody('')
-}
+    checkValidation()
+    if(validation.titleValid && validation.bodyValid){
+      if(modalWording === "Create"){
+        dispatch(createPost({title: title,
+          body: body, userId: parseInt(id), id: latestId}))
+      }
+      else{
+        dispatch(editPost({title: title,
+          body: body, id: currentId}))
+      }
+      setToggle(false)
+      setTitle('')
+      setBody('')
+    } else {
+      alert(`There are some error:\n ${validation.title} \n ${validation.body}`)
+    }
+  }
   
   const clickDelete = (post) => {
     dispatch(deletePost(post))
