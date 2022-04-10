@@ -12,12 +12,10 @@ function Comment() {
     let {id} = useParams()
     let {postId} = useParams()
 
-    console.log(id, postId)
-
     const dispatch = useDispatch()
     const postsList = useSelector(state => state.posts.posts)
     const commentList = useSelector(state => state.posts.comments)
-    const postHeader = postsList?.filter(x => x.id === parseInt(postId))
+    const postHeader = postsList?.filter(x => x.id === parseInt(postId))[0]
     const postComments = commentList?.filter(x => x.postId === parseInt(postId))
     const [currentPage, setCurrentPage] = useState(1);
     const [limitPerPage] = useState(5);
@@ -33,6 +31,15 @@ function Comment() {
     const [email, setEmail] = useState('')
     const [body, setBody] = useState('')
     const [currentId, setCurrentId] = useState(0)
+
+    const [validation, setValidation] = useState({
+        name: "",
+        email: "",
+        body: "",
+        validName: false,
+        validEmail: false,
+        validBody: false
+      });
   
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
     const latestId = commentList?.length + 1
@@ -69,16 +76,61 @@ function Comment() {
         setBody(body)
     }
 
+    const checkValidation = () => {
+        let errors = validation;
+    
+        if (!name.trim()) {
+            errors.validName = false  
+            errors.name = "Name is required";
+        } else {
+            errors.validName = true
+            errors.name = "";
+        }
+        if (!body.trim()) {
+            errors.validBody = false
+            errors.body = "Body message is required";
+        } else {
+            errors.validBody = true
+            errors.body = "";
+        }
+    
+        // const emailRegEx =
+        //   "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/";
+        if (!email.trim()) {
+            errors.email = "Email is required";
+            errors.validEmail = false
+        } 
+        // else if (!email.match(emailRegEx)) {
+        //     errors.email = "Please use a valid email address";
+        //     errors.validEmail = false
+        else {
+            errors.validEmail = true
+            errors.email = "";
+        }
+    
+    
+        setValidation(errors);
+      };
+
     const submitComment = () => {
-        modalWording === "Create" ? 
-        dispatch(createComment({name: name,
-            email: email, body: body, postId: parseInt(id), id: latestId})) :
-        dispatch(editComment({name: name,
-            email: email, body: body, id: currentId}))
-        setToggle(false)
-        setName('')
-        setEmail('')
-        setBody('')
+        checkValidation()
+        // console.log(validation.name, validation.body, validation.email)
+        if (validation.validBody && validation.validEmail && validation.validName){
+            if(modalWording === "Create"){
+            dispatch(createComment({name: name,
+                email: email, body: body, postId: parseInt(id), id: latestId}))
+            }
+            else{
+            dispatch(editComment({name: name,
+                email: email, body: body, id: currentId}))
+            }
+            setToggle(false)
+            setName('')
+            setEmail('')
+            setBody('')
+        } else {
+            alert(`There are some error:\n ${validation.name} \n ${validation.email} \n ${validation.body}`)
+        }
     }
 
     function handleName(event) {
@@ -108,9 +160,9 @@ function Comment() {
                 </button>
             </div>
             <div className='flex flex-col text-left mt-5 mx-5 mb-5 p-5 py-8 bg-white shadow rounded-lg'>
-                <h1 className='text-2xl font-bold mb-4 uppercase'>{postHeader[0].title}</h1>
+                <h1 className='text-2xl font-bold mb-4 uppercase'>{postHeader?.title}</h1>
                 <h1>
-                    {postHeader[0].body}
+                    {postHeader?.body}
                 </h1>
             </div>
             {currentPost?.map((comment, index) => (
