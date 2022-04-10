@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import ProfileDetail from '../components/ProfileDetail';
 import { loadPhotoAlbums } from '../redux/features/Albumlist';
@@ -12,9 +12,18 @@ function Detail() {
 
   let {id} = useParams()
 
+  const userList = useSelector(state => state.users.userList)
   const postList = useSelector(state => state.posts.posts)
   const albumList = useSelector(state => state.photoAlbums.data.albums)
   const dispatch = useDispatch()
+
+  const userIndex = userList?.findIndex(x => x.id === parseInt(id));
+  const currentUser = userList[userIndex]
+
+
+  const userPost = postList?.filter(post => post.userId === parseInt(id))
+  const userAlbum = albumList?.filter(album => album.userId === parseInt(id))
+
 
   useEffect(() => {
     dispatch(loadUsers());
@@ -24,36 +33,38 @@ function Detail() {
 
   
   return (
-    <>
-    <h1>{id}</h1>
-        <ProfileDetail/>
-        <div className='flex mx-8'>
-            <div className='w-1/2 flex flex-col bg-white mr-2.5 mb-5 rounded-lg shadow-sm'>
-                <div className='p-3 px-7'>Post</div>
-                {postList.filter(post => post.userId === 1).slice(8,10)
-                  .map((post, index) => (
-                    <div key={index} className="py-3 px-7 text-left">
-                      <div>{post.title.toUpperCase()}</div>
-                      <div className='whitespace-normal'>{post.body}</div>
-                    </div>
-                ))}
-                <div className='py-2 border-t'>See more</div>
-            </div>
-            <div className='w-1/2 flex flex-col bg-white ml-2.5 mb-5 rounded-lg shadow-sm'>
-              <div className='p-3 px-7'>Album</div>
-              <div className='mb-2 flex flex-wrap justify-evenly'>
-              {albumList.filter(album => album.userId === 1).slice(7,10)
-                  .map((album, index) => (
-                  <div key={index} className={`w-40 h-40 p-3 flex flex-col items-center justify-evenly border border-black rounded-xl m-3 bg-gray-900 hover:scale-105`}>
-                    <h1 className='font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400'>{album.title}</h1>
-                    <h1 className='text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400'>Photos</h1>
+    <div className='flex flex-col'>
+      <div className='flex justify-center mt-5 mx-8 font-semibold text-3xl'><h1>{currentUser?.name}'s Profile</h1></div>
+      <ProfileDetail name={currentUser?.name} address={currentUser?.address} 
+      phone={currentUser?.phone} email={currentUser?.email} website={currentUser?.website} company={currentUser?.company}/>
+      <div className='flex mx-8'>
+          <div className='w-1/2 flex flex-col bg-white mr-2.5 mb-5 rounded-lg shadow-sm'>
+              <div className='p-3 px-7'><h1 className='font-semibold text-xl'>Post</h1></div>
+              {userPost?.slice(userAlbum?.length - 2 ,userAlbum?.length)
+                ?.map((post, index) => (
+                  <div key={index} className="py-3 px-7 text-left">
+                    <div>{post.title.toUpperCase()}</div>
+                    <div className='whitespace-normal'>{post.body}</div>
                   </div>
-                ))}
-              </div>
-              <div className='py-2 border-t'>See more</div>
+              ))}
+              <Link to={`/${id}/posts`}>
+              <div className='py-2 border-t font-semibold hover:bg-gray-200'>See more</div>
+              </Link>
+          </div>
+          <div className='w-1/2 flex flex-col bg-white ml-2.5 mb-5 rounded-lg shadow-sm'>
+            <div className='p-3 px-7'><h1 className='font-semibold text-xl'>Album</h1></div>
+            <div className='flex flex-wrap flex-grow justify-evenly'>
+            {userAlbum?.slice(userAlbum?.length-3 ,userAlbum?.length)
+                ?.map((album, index) => (
+                <button key={index} className={`w-40 h-40 p-3 flex flex-col items-center justify-evenly border border-black rounded-xl m-3 bg-gray-900 hover:scale-105`}>
+                  <h1 className='font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400'>{album.title}</h1>
+                </button>
+              ))}
             </div>
-        </div>
-    </>
+            <div className='py-2 border-t flex-shrink'>See more</div>
+          </div>
+      </div>
+    </div>
   )
 }
 

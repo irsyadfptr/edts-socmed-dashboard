@@ -18,6 +18,7 @@ function App() {
           <Route path="/user/:id" element={<UserDetail/>}/> */}
           <Route path="/" element={<Home />}/>
           <Route path="/:id" element={<Detail />}/>
+          <Route path="/:id/posts" element={<Post />}/>
           {/* <Route path='/post' element={<Post/>}/>
           <Route path='/album' element={<Album/>}/>
           <Route path='/album/:id' element={<AlbumDetaill/>}/>

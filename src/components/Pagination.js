@@ -25,7 +25,7 @@ function Pagination({totalPosts, paginate, currentPage, limitPage}) {
             <nav className='block'>
               <ul className='flex pl-0 rounded list-none flex-wrap'>
                 <li>
-                  {pageNumbers.map((number, index) => (
+                  {pageNumbers?.map((number, index) => (
                     <button key={index}
                       onClick={() => {
                         paginate(number);
