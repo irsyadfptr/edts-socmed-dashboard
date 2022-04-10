@@ -11,7 +11,7 @@ export const loadUsers = createAsyncThunk(
 
 const initialState = {
   isLoading: false,
-  userList: {}
+  userList: []
 }
 
 const userSlice = createSlice({

@@ -23,7 +23,9 @@ function Table({userlist}) {
                         <td className="py-4 px-6 border-b border-grey-light text-sm">{user.email}</td>
                         <td className="py-4 px-6 border-b border-grey-light text-lg">
                             <div className='flex justify-center'>
-                            <AiFillEye/>
+                                <Link to={`/${user.id}`}>
+                                <AiFillEye/>
+                                </Link>    
                             </div>
                         </td>
                     </tr>

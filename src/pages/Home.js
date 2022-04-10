@@ -21,15 +21,15 @@ function Home() {
 
     const indexOfLastList = currentPage * limitPerPage;
     const indexOfFirstList = indexOfLastList - limitPerPage;
-    const currentUsers = users.slice(indexOfFirstList, indexOfLastList);
+    const currentUsers = users?.slice(indexOfFirstList, indexOfLastList);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
-      <div  className='flex flex-col font-semibold uppercase text-5xl justify-center items-center my-20'>
+      <div  className='flex flex-col font-semibold uppercase text-5xl justify-center items-center py-8'>
         <Table userlist= {currentUsers}/>
-        <div className='justify-left'>
+        <div className='justify-left mt-5 w-[45rem]'>
         <Pagination
           postsPerPage={limitPerPage}
           totalPosts={users.length}
