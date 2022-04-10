@@ -28,7 +28,6 @@ function Table({userlist}) {
                         </td>
                     </tr>
                 ))}
-
             </tbody>
             </table>
         </div>

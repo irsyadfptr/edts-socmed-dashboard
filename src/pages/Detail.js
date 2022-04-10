@@ -23,7 +23,7 @@ function Detail() {
     <>
         <ProfileDetail/>
         <div className='flex mx-8'>
-            <div className='w-1/2 flex flex-col bg-white mr-2.5 my-5 rounded-lg shadow-sm'>
+            <div className='w-1/2 flex flex-col bg-white mr-2.5 mb-5 rounded-lg shadow-sm'>
                 <div className='p-3 px-7'>Post</div>
                 {postList.filter(post => post.userId === 1).slice(8,10)
                   .map((post, index) => (
@@ -34,7 +34,7 @@ function Detail() {
                 ))}
                 <div className='py-2 border-t'>See more</div>
             </div>
-            <div className='w-1/2 flex flex-col bg-white ml-2.5 my-5 rounded-lg shadow-sm'>
+            <div className='w-1/2 flex flex-col bg-white ml-2.5 mb-5 rounded-lg shadow-sm'>
               <div className='p-3 px-7'>Album</div>
               <div className='mb-2 flex flex-wrap justify-evenly'>
               {albumList.filter(album => album.userId === 1).slice(7,10)
