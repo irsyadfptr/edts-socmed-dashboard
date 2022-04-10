@@ -20,6 +20,10 @@ function App() {
           <Route path="/:id" element={<Detail />}/>
           <Route path="/:id/posts" element={<Post />}/>
           <Route path="/:id/posts/:postId" element={<Comment />}/>
+          <Route path="/:id/albums" element={<Album />}/>
+          <Route path="/:id/albums/:albumId" element={<Photo />}/>
+
+
           {/* <Route path='/post' element={<Post/>}/>
           <Route path='/album' element={<Album/>}/>
           <Route path='/album/:id' element={<AlbumDetaill/>}/>

@@ -58,13 +58,15 @@ function Detail() {
             <div className='flex flex-wrap flex-grow justify-evenly'>
             {userAlbum?.slice(userAlbum?.length-3 ,userAlbum?.length)
                 ?.map((album, index) => (
-                <button key={index} className={`w-40 h-40 p-3 flex flex-col items-center justify-evenly border border-black rounded-xl m-3 bg-gray-900 hover:scale-105`}>
+                <Link to={`/${id}/albums/${album.id}`} key={index} className={`w-40 h-40 p-3 flex flex-col items-center justify-evenly border border-black rounded-xl m-3 bg-gray-900 hover:scale-105`}>
                   <h1 className='font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400'>{album.title}</h1>
-                </button>
+                </Link>
               ))}
             </div>
-            <div className='py-2 border-t flex-shrink'>See more</div>
-          </div>
+              <Link to={`/${id}/albums`}>
+                <div className='flex-shrink py-2 border-t font-semibold hover:bg-gray-200'>See more</div>
+              </Link>          
+            </div>
       </div>
     </div>
   )

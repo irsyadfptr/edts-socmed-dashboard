@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
 import ModalPhoto from '../components/modal/ModalPhoto'
 import { loadPhotoAlbums, setPhotoUrl, setTitle } from '../redux/features/Albumlist'
 
 function Photo() {
-    // let { id } = useParams()
-    const photos = useSelector(state => state.photoAlbums.data.photos)?.filter(fil => fil.albumId === 1)
+    let { id, albumId } = useParams()
+    const photos = useSelector(state => state.photoAlbums.data.photos)?.filter(fil => fil.albumId === parseInt(albumId))
     const photo = useSelector(state => state.photoAlbums.photoUrl)
     const title = useSelector(state => state.photoAlbums.title)
-    const albumName = useSelector(state => state.photoAlbums.data.albums)[0]?.title
+    const albumName = useSelector(state => state.photoAlbums.data.albums)?.filter(fil => fil.id === parseInt(albumId))
+
+    console.log(albumName)
 
     const [toggle, setToggle] = useState(false)
     const dispatch = useDispatch()
@@ -26,10 +29,18 @@ function Photo() {
     const closeClick = () => {
         setToggle(false)
     }
+
   return (
     <>
     <div className='mt-10'>
-        <h1 className='text-3xl font-semibold'>{albumName?.toUpperCase()}</h1>
+        <div className='flex ml-10 mb-10'>
+            <Link to={`/${id}/albums`}>
+                <button className='justify-left py-2 px-4 rounded-xl bg-gray-900'>
+                <h1 className='font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400'>Go Back</h1>
+                </button>
+            </Link>
+        </div>
+        <h1 className='text-3xl font-semibold uppercase'>{albumName[0].title}</h1>
         <div className="flex flex-wrap p-2 justify-center items-center">
             {photos?.map((photo, index) => (
                 <button key={index} className='m-3 flex flex-col hover:scale-105' type="button"  onClick={() => cardClick(photo.title, photo.url)} >
