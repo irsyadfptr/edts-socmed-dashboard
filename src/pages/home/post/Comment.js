@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import Pagination from '../components/Pagination';
 import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
-import { createComment, deleteComment, editComment, loadPosts } from '../redux/features/Post';
 import { Link, useParams } from 'react-router-dom';
-import ModalComment from '../components/modal/ModalComment';
 import { MdFeed } from "react-icons/md";
 import { IoMdAddCircle } from "react-icons/io";
+import { createComment, deleteComment, editComment, loadPosts } from '../../../redux/features/Post';
+import Pagination from '../../../components/Pagination';
+import ModalComment from '../../../components/comment/ModalComment';
 
 function Comment() {
 

@@ -2,11 +2,12 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
-import ProfileDetail from '../components/ProfileDetail';
-import { loadPhotoAlbums } from '../redux/features/Albumlist';
-import { loadPosts } from '../redux/features/Post';
-import { loadUsers } from '../redux/features/Userlist';
+
 import { AiFillHome } from "react-icons/ai";
+import ProfileDetail from '../../components/user/ProfileDetail';
+import { loadUsers } from '../../redux/features/Userlist';
+import { loadPhotoAlbums } from '../../redux/features/Albumlist';
+import { loadPosts } from '../../redux/features/Post';
 
 
 

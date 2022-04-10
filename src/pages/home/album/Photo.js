@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import ModalPhoto from '../components/modal/ModalPhoto'
-import { loadPhotoAlbums, setPhotoUrl, setTitle } from '../redux/features/Albumlist'
 import { IoMdAlbums } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
+import { loadPhotoAlbums, setPhotoUrl, setTitle } from '../../../redux/features/Albumlist';
+import ModalPhoto from '../../../components/photo/ModalPhoto';
 
 
 

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { loadPhotoAlbums } from '../redux/features/Albumlist'
-import { loadUsers } from '../redux/features/Userlist'
+import { loadPhotoAlbums } from '../../../redux/features/Albumlist'
+import { loadUsers } from '../../../redux/features/Userlist'
 import { FaUser } from "react-icons/fa";
 
 function Album() {

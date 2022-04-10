@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import ModalPost from '../components/modal/ModalPost'
-import Pagination from '../components/Pagination'
-import PostTable from '../components/PostTable'
-import { createPost, deletePost, editPost, loadPosts } from '../redux/features/Post'
+
 import { FaUser } from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
+import { createPost, deletePost, editPost, loadPosts } from '../../../redux/features/Post';
+import PostTable from '../../../components/post/PostTable';
+import Pagination from '../../../components/Pagination';
+import ModalPost from '../../../components/post/ModalPost';
 
 
 

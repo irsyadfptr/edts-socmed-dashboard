@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route,} from "react-router-dom";
 import './App.css';
 import Header from "./components/Header";
-import Album from "./pages/Album";
-import Comment from "./pages/Comment";
-import Detail from "./pages/Detail";
-import Home from "./pages/Home";
-import Photo from "./pages/Photo";
-import Post from "./pages/Post";
+import Album from "./pages/home/album/Album";
+import Photo from "./pages/home/album/Photo";
+import Detail from "./pages/home/Detail";
+import Home from "./pages/home/Home";
+import Comment from "./pages/home/post/Comment";
+import Post from "./pages/home/post/Post";
 
 function App() {
   return (
@@ -14,20 +14,12 @@ function App() {
       <Header/>
       <Router>
         <Routes>
-          {/* <Route path="/user" element={<User/>}/>
-          <Route path="/user/:id" element={<UserDetail/>}/> */}
           <Route path="/" element={<Home />}/>
           <Route path="/:id" element={<Detail />}/>
           <Route path="/:id/posts" element={<Post />}/>
           <Route path="/:id/posts/:postId" element={<Comment />}/>
           <Route path="/:id/albums" element={<Album />}/>
           <Route path="/:id/albums/:albumId" element={<Photo />}/>
-
-
-          {/* <Route path='/post' element={<Post/>}/>
-          <Route path='/album' element={<Album/>}/>
-          <Route path='/album/:id' element={<AlbumDetaill/>}/>
-          <Route path='/post/:id' element={<PostDetail/>}/> */}
         </Routes>
     </Router>
     </div>

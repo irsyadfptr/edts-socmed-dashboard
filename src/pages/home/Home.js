@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Pagination from '../components/Pagination'
-import Table from '../components/UserTable'
-import { loadPhotoAlbums } from '../redux/features/Albumlist'
-import { loadPosts } from '../redux/features/Post'
-import { loadUsers } from '../redux/features/Userlist'
+import Pagination from '../../components/Pagination';
+import Table from '../../components/user/UserTable';
+import { loadPhotoAlbums } from '../../redux/features/Albumlist';
+import { loadPosts } from '../../redux/features/Post';
+import { loadUsers } from '../../redux/features/Userlist';
+
 
 
 function Home() {
@@ -16,8 +17,8 @@ function Home() {
 
     useEffect(() => {
       dispatch(loadUsers());
-      dispatch(loadPhotoAlbums());
-      dispatch(loadPosts())
+      dispatch(loadPosts());
+      dispatch(loadPhotoAlbums())
     }, [dispatch])
 
     const indexOfLastList = currentPage * limitPerPage;
