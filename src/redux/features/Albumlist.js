@@ -32,15 +32,12 @@ const photoAlbumSlice = createSlice({
     },
     extraReducers: {
       [loadPhotoAlbums.pending]: () => {
-        console.log("Pending");
       },
       [loadPhotoAlbums.fulfilled]: (state, { payload }) => {
-        console.log("Fetched Successfully!");
         return {...state, data: payload};
         // { ...state, base: payload.base, rates: payload.rates, loading: false, searchInput:''}
       },
       [loadPhotoAlbums.rejected]: () => {
-        console.log("Rejected!");
       },
     },
   });

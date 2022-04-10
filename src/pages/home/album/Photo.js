@@ -13,9 +13,7 @@ function Photo() {
     const photos = useSelector(state => state.photoAlbums.data.photos)?.filter(fil => fil.albumId === parseInt(albumId))
     const photo = useSelector(state => state.photoAlbums.photoUrl)
     const title = useSelector(state => state.photoAlbums.title)
-    const albumName = useSelector(state => state.photoAlbums.data.albums)?.filter(fil => fil.id === parseInt(albumId))
-
-    console.log(albumName)
+    const albumName = useSelector(state => state.photoAlbums.data.albums)?.filter(fil => fil.id === parseInt(albumId))[0]
 
     const [toggle, setToggle] = useState(false)
     const dispatch = useDispatch()
@@ -49,7 +47,7 @@ function Photo() {
             </button>
             </Link>
         </div>
-        <h1 className='text-3xl font-semibold uppercase'>{albumName[0].title}</h1>
+        <h1 className='text-3xl font-semibold uppercase'>{albumName?.title}</h1>
         <div className="flex flex-wrap p-2 justify-center items-center">
             {photos?.map((photo, index) => (
                 <button key={index} className='m-3 flex flex-col hover:scale-105' type="button"  onClick={() => cardClick(photo.title, photo.url)} >

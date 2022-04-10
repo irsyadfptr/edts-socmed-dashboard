@@ -45,14 +45,11 @@ const postSlice = createSlice({
     },
     extraReducers: {
       [loadPosts.pending]: () => {
-        console.log("Pending");
       },
       [loadPosts.fulfilled]: (state, { payload }) => {
-        console.log("Fetched Successfully!");
         return  payload;
       },
       [loadPosts.rejected]: () => {
-        console.log("Rejected!");
       },
     },
   });

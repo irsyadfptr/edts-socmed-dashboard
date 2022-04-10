@@ -24,14 +24,11 @@ const userSlice = createSlice({
     },
     extraReducers: {
       [loadUsers.pending]: () => {
-        console.log("Pending");
       },
       [loadUsers.fulfilled]: (state, { payload }) => {
-        console.log("Fetched Successfully!");
         return {...state, userList: payload, isLoading: false};
       },
       [loadUsers.rejected]: () => {
-        console.log("Rejected!");
       },
     },
   });
