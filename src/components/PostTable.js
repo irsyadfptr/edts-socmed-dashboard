@@ -4,7 +4,7 @@ import { AiFillEye, AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 
 
-function PostTable({postlist, editClick, deleteClick}) {
+function PostTable({postlist, editClick, deleteClick, userId}) {
 
   return (
     <>
@@ -24,7 +24,9 @@ function PostTable({postlist, editClick, deleteClick}) {
                         <td className="py-4 px-6 border-b border-grey-light text-sm">{post.body}</td>
                         <td className="py-4 px-6 border-b border-grey-light text-lg">
                             <div className='flex justify-center text-2xl'>
-                                <button className="px-2"><AiFillEye/></button>
+                                <Link to={`/${userId}/posts/${post.id}`}>
+                                    <button className="px-2"><AiFillEye/></button>
+                                </Link>
                                 <button className="px-2" onClick={() => editClick(post.id, post.title, post.body)} ><AiFillEdit/></button>
                                 <button className="px-2" onClick={() => deleteClick(post.id)}><MdDelete/></button>
                             </div>

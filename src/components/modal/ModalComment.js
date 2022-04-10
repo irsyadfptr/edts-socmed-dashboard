@@ -16,10 +16,9 @@ function ModalComment({wording, close, submit, name, email, msg, modalName, moda
                 </div>
                 <div className="flex justify-center">
                 <div className="mb-3 px-3 pt-3 xl:w-96">
-                    <div className='flex mb-4 justify-between justify-between'>
+                    <div className='flex mb-4 justify-between justify-between text-xs'>
                         <input value={modalName} onChange={name} className='w-5/12
                         px-3 py-1
-                        text-base
                         font-normal
                         text-gray-700
                         bg-white bg-clip-padding
@@ -29,7 +28,7 @@ function ModalComment({wording, close, submit, name, email, msg, modalName, moda
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' placeholder='Your name'/>
-                        <input value={modalEmail} onChange={email} className='w-5/12 text-base px-3 py-1
+                        <input value={modalEmail} onChange={email} className='w-5/12 px-3 py-1
                         font-normal
                         text-gray-700
                         bg-white bg-clip-padding
@@ -47,7 +46,7 @@ function ModalComment({wording, close, submit, name, email, msg, modalName, moda
                         w-full
                         px-3
                         py-1.5
-                        text-base
+                        text-xs
                         font-normal
                         text-gray-700
                         bg-white bg-clip-padding
@@ -63,7 +62,7 @@ function ModalComment({wording, close, submit, name, email, msg, modalName, moda
                     placeholder="Your message"
                     ></textarea>
                     <div className='flex justify-end mt-3'>
-                        <button onClick={submit} className='py-2 px-3 mr-3 bg-green-700 rounded text-xs font-semibold text-white'>{wording}</button>
+                        <button onClick={submit} className='py-2 px-3 mr-3 bg-green-700 rounded text-xs font-semibold text-white'>Submit</button>
                         <button onClick={close} className='py-2 px-3 bg-gray-200 rounded text-xs font-semibold text-white'>Cancel</button>
                     </div>
                 </div>

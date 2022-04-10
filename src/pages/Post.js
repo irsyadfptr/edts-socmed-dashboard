@@ -92,7 +92,7 @@ function Post() {
 
       <button className='bg-white text-sm font-semibold p-3 my-3 rounded-xl shadow' onClick={openModalCreate}>Create Post</button>
     </div>
-    <PostTable postlist={currentPost} deleteClick={clickDelete} editClick={openModalEdit}/>
+    <PostTable postlist={currentPost} deleteClick={clickDelete} editClick={openModalEdit} userId={id}/>
     <div className='justify-left '>
       <Pagination
             postsPerPage={limitPerPage}

@@ -43,7 +43,9 @@ function Detail() {
               {userPost?.slice(userAlbum?.length - 2 ,userAlbum?.length)
                 ?.map((post, index) => (
                   <div key={index} className="py-3 px-7 text-left">
-                    <div>{post.title.toUpperCase()}</div>
+                    <Link to={`/${id}/posts/${post.id}`}>
+                    <div className='text-black hover:text-blue-500'>{post.title.toUpperCase()}</div>
+                    </Link>
                     <div className='whitespace-normal'>{post.body}</div>
                   </div>
               ))}
