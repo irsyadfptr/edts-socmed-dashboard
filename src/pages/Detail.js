@@ -6,6 +6,8 @@ import ProfileDetail from '../components/ProfileDetail';
 import { loadPhotoAlbums } from '../redux/features/Albumlist';
 import { loadPosts } from '../redux/features/Post';
 import { loadUsers } from '../redux/features/Userlist';
+import { AiFillHome } from "react-icons/ai";
+
 
 
 function Detail() {
@@ -34,6 +36,13 @@ function Detail() {
   
   return (
     <div className='flex flex-col'>
+      <div className='flex mt-10'>
+        <Link to={`/`}>
+          <button className='flex bg-white text-xl font-semibold p-3 ml-8 rounded-xl shadow hover:text-white hover:bg-gray-900'>
+            <AiFillHome/>
+          </button>
+        </Link>
+      </div>
       <div className='flex justify-center mt-5 mx-8 font-semibold text-3xl'><h1>{currentUser?.name}'s Profile</h1></div>
       <ProfileDetail name={currentUser?.name} address={currentUser?.address} 
       phone={currentUser?.phone} email={currentUser?.email} website={currentUser?.website} company={currentUser?.company}/>
@@ -50,7 +59,7 @@ function Detail() {
                   </div>
               ))}
               <Link to={`/${id}/posts`}>
-              <div className='py-2 border-t font-semibold hover:bg-gray-200'>See more</div>
+              <div className='py-2 border-t font-semibold hover:text-white hover:bg-gray-900 hover:rounded-b-lg'>See all</div>
               </Link>
           </div>
           <div className='w-1/2 flex flex-col bg-white ml-2.5 mb-5 rounded-lg shadow-sm'>
@@ -64,7 +73,7 @@ function Detail() {
               ))}
             </div>
               <Link to={`/${id}/albums`}>
-                <div className='flex-shrink py-2 border-t font-semibold hover:bg-gray-200'>See more</div>
+                <div className='flex-shrink py-2 border-t font-semibold hover:text-white hover:bg-gray-900 hover:rounded-b-lg'>See all</div>
               </Link>          
             </div>
       </div>

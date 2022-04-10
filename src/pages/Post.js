@@ -5,6 +5,10 @@ import ModalPost from '../components/modal/ModalPost'
 import Pagination from '../components/Pagination'
 import PostTable from '../components/PostTable'
 import { createPost, deletePost, editPost, loadPosts } from '../redux/features/Post'
+import { FaUser } from "react-icons/fa";
+import { IoMdAddCircle } from "react-icons/io";
+
+
 
 function Post() {
 
@@ -117,16 +121,17 @@ function Post() {
 
 
   return (
+    
     <>
     <div className='flex flex-col font-semibold text-5xl justify-center items-center py-10'>
-    <div className='flex justify-right items-right w-[65rem] justify-between'>
-      <Link to={`/${id}`}>
-        <button className='bg-white text-sm font-semibold p-3 my-3 rounded-xl shadow'>
-          Go back
-        </button>
-      </Link>
+    <div className='flex justify-right items-right w-[65rem] justify-between mb-8'>
+    <Link to={`/${id}/`}>
+      <button className='flex bg-white text-lg font-semibold p-3 rounded-xl shadow hover:text-white hover:bg-gray-900 items-center'>
+          <FaUser/> <h1 className='px-2'>Profile</h1>
+      </button>
+    </Link>
 
-      <button className='bg-white text-sm font-semibold p-3 my-3 rounded-xl shadow' onClick={openModalCreate}>Create Post</button>
+      <button className='flex bg-white text-lg font-semibold p-3 rounded-xl shadow hover:text-white hover:bg-gray-900 items-center' onClick={openModalCreate}><IoMdAddCircle/> <h1 className='px-2'>Create</h1></button>
     </div>
     <PostTable postlist={currentPost} deleteClick={clickDelete} editClick={openModalEdit} userId={id}/>
     <div className='justify-left '>

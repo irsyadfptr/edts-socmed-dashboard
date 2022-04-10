@@ -6,6 +6,8 @@ import { MdDelete } from "react-icons/md";
 import { createComment, deleteComment, editComment, loadPosts } from '../redux/features/Post';
 import { Link, useParams } from 'react-router-dom';
 import ModalComment from '../components/modal/ModalComment';
+import { MdFeed } from "react-icons/md";
+import { IoMdAddCircle } from "react-icons/io";
 
 function Comment() {
 
@@ -148,16 +150,14 @@ function Comment() {
   return (
     <>
         <div className='block mx-auto'>
-            <div className='flex justify-between m-5'>
-                <Link to={`/${id}/posts/`}>
-                <button className='py-2 px-4 rounded-xl bg-gray-700 text-white'>
-                <h1>Go Back</h1>
+            <div className='flex justify-right items-right mx-3 justify-between mt-8'>
+                <Link to={`/${id}/posts`}>
+                <button className='flex bg-white text-lg font-semibold p-3 rounded-xl shadow hover:text-white hover:bg-gray-900 items-center'>
+                    <MdFeed/> <h1 className='px-2'>Post</h1>
                 </button>
                 </Link>
 
-                <button onClick={openModalCreate} className='py-2 px-4 rounded-xl bg-gray-700 text-white'>
-                <h1>New comment</h1>
-                </button>
+                <button className='flex bg-white text-lg font-semibold p-3 rounded-xl shadow hover:text-white hover:bg-gray-900 items-center' onClick={openModalCreate}><IoMdAddCircle/> <h1 className='px-2'>Create</h1></button>
             </div>
             <div className='flex flex-col text-left mt-5 mx-5 mb-5 p-5 py-8 bg-white shadow rounded-lg'>
                 <h1 className='text-2xl font-bold mb-4 uppercase'>{postHeader?.title}</h1>

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { loadPhotoAlbums } from '../redux/features/Albumlist'
 import { loadUsers } from '../redux/features/Userlist'
-
+import { FaUser } from "react-icons/fa";
 
 function Album() {
 
@@ -27,13 +27,13 @@ function Album() {
     <>
       <div className='mt-5 font-semibold'>
           <div className='flex flex-col'>
-            <div className='flex ml-10'>
-              <Link to={`/${id}`}>
-                    <button className='justify-left py-2 px-4 rounded-xl bg-gray-900'>
-                    <h1 className='font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400'>Go Back</h1>
-                    </button>
-              </Link>
-            </div>
+          <div className='flex ml-10 mb-10 mt-2'>
+            <Link to={`/${id}/`}>
+            <button className='flex bg-white text-xl font-semibold p-3 rounded-xl shadow hover:text-white hover:bg-gray-900 items-center'>
+                <FaUser/> <h1 className='px-2'>Profile</h1>
+            </button>
+            </Link>
+          </div>
             <div className='text-3xl'>
             <h1>{currentUser.name}'s Album</h1>
             </div>
