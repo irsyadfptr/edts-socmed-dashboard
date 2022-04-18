@@ -1,11 +1,12 @@
 import React from 'react'
 
-function ModalPost({close, submit, wording, title, msg, modalTitle, modalBody}) {
+function ModalPost({close, submit, wording, title, msg, modalTitle, modalBody, validationTitle, validationBody}) {
 
+    console.log(validationBody, validationTitle)
   return (
     <div id="defaultModal" className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 py-5">
                 <div className="flex justify-between items-start p-3 rounded-t border-b dark:border-gray-600">
                     <h3 className="text-lg font-semibold text-gray-900 lg:text-xl dark:text-white">
                         {wording} Post
@@ -15,22 +16,27 @@ function ModalPost({close, submit, wording, title, msg, modalTitle, modalBody}) 
                     </button>
                 </div>
                 <div className="flex justify-center">
-                <div className="mb-3 px-3 pt-3 xl:w-96">
-                    <input onChange={title} value={modalTitle} className='form-control
-                        block
-                        w-full
-                        px-3
-                        py-1.5
-                        text-base
-                        font-normal
-                        text-gray-700
-                        bg-white bg-clip-padding
-                        border border-solid border-gray-300
-                        rounded
-                        transition
-                        ease-in-out
-                        m-0
-                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none mb-5' placeholder='Title'/>
+                <div className=" px-3 pt-3 xl:w-96">
+                    <div className='flex flex-col mb-5'>
+                        <input onChange={title} value={modalTitle} className='form-control
+                            block
+                            w-full
+                            px-3
+                            py-1.5
+                            text-base
+                            font-normal
+                            text-gray-700
+                            bg-white bg-clip-padding
+                            border border-solid border-gray-300
+                            rounded
+                            transition
+                            ease-in-out
+                            m-0
+                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none' placeholder='Title'/>
+                        <div className='flex'><h1 className='text-red-500 text-xs justify-left py-0.5'>*{validationTitle}</h1></div>
+                    </div>
+
+                    <div className='flex flex-col'>
                     <textarea onChange={msg} value={modalBody}
                     className="
                         form-control
@@ -53,6 +59,8 @@ function ModalPost({close, submit, wording, title, msg, modalTitle, modalBody}) 
                     rows="5"
                     placeholder="Your message"
                     ></textarea>
+                    <div className='flex'><h1 className='text-red-500 text-xs justify-left py-0.5'>*{validationBody}</h1></div>
+                    </div>
                     <div className='flex justify-end mt-3'>
                         <button onClick={submit} className='py-2 px-3 mr-3 bg-green-700 rounded text-xs font-semibold text-white'>Submit</button>
                         <button onClick={close} className='py-2 px-3 bg-gray-200 rounded text-xs font-semibold text-white'>Cancel</button>

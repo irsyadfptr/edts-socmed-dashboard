@@ -66,9 +66,6 @@ function Post() {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  useEffect(() => {
-    dispatch(loadPosts())
-  }, [dispatch])
 
   const closeModal = () => {
     setToggle(false)
@@ -103,8 +100,6 @@ function Post() {
       setToggle(false)
       setTitle('')
       setBody('')
-    } else {
-      alert(`There are some error:\n ${validation.title} \n ${validation.body}`)
     }
   }
   
@@ -120,6 +115,9 @@ function Post() {
     setBody(event.target.value)
   }
 
+  useEffect(() => {
+    dispatch(loadPosts())
+  }, [dispatch])
 
   return (
     
@@ -144,7 +142,8 @@ function Post() {
             limitPage={limitPerPage}
           />
     </div>
-    {toggle ? <ModalPost wording={modalWording} close={closeModal} title={handleTitle} msg={handleBody} submit={submitPost} modalTitle={title} modalBody={body}/> : <></>}
+    {toggle ? <ModalPost wording={modalWording} close={closeModal} title={handleTitle} msg={handleBody} submit={submitPost}
+     modalTitle={title} modalBody={body} validationTitle={validation.title} validationBody={validation.body}/> : <></>}
     </div>
     </>
   )
